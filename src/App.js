@@ -7,14 +7,14 @@ class App extends React.Component {
 
 	// setting my state object.
 	state = {
-		task: []
+		tasks: []
 	}
 
 	// add a new task to table.
 	addTask = (e) => {
 		e.preventDefault()
 		const taskName = e.target.elements.taskName.value // get form input value.
-		const taskList = this.state.task;
+		const taskList = this.state.tasks;
 		taskList.push(taskName);
 		this.setState({
 			task: taskList
@@ -24,7 +24,7 @@ class App extends React.Component {
 	render() {
 		return (
 			<div>
-				<Table tasks={this.state.task} />
+				<Table tasks={this.state.tasks} />
 				<Form addTask={this.addTask} />
 			</div>
 		)
