@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Task = props => <tr><td>{props.task}</td></tr>;
+const Tasks = props => <tr><td>{props.tasks}</td></tr>;
 
 class Table extends React.Component{
     render () {
@@ -20,7 +20,7 @@ class Table extends React.Component{
                     <tbody>
                         {
                             this.props.tasks.map( (item, index) =>  
-                                <Task key={index} task={item} />
+                                <Tasks key={index} tasks={item} />
                             )
                         }
                     </tbody>

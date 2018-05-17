@@ -1,46 +1,46 @@
-import React from 'react'
-import Table from './components/Table'
-import Form from './components/Form'
-import Filter from './components/Filter'
+import React from 'react';
+import Table from './components/Table';
+import Form from './components/Form';
+import Filter from './components/Filter';
 
 
 class App extends React.Component {
 
 	// setting my state object.
 	state = {
-		tasks: []
-	}
-
-	// setting my filter object.
-	filter = {
-		search: undefined
-	}
+		tasks: ['teste', 'caio', 'caue', 'elaine', 'stark']
+	};
 
 	// add a new task to table.
+	getInputValue = (e) => {
+		return  e.target.elements.taskName.value;
+	}
+
+	getSearchValue = (e) => {
+		return  e.target.value;
+	}
+
 	addTask = (e) => {
 		e.preventDefault()
-		const taskName = e.target.elements.taskName.value // get form input value.
-		const taskList = this.state.tasks
-		taskList.push(taskName)
 		this.setState({
-			task: taskList
-		})
-	}
+			tasks: this.state.tasks.concat(this.getInputValue(e))
+		});
+	};
 
-	addFilter = (e) => {
-		const currentSearch = e.target.value.toLowerCase();
+	filterTasks = (e) => {
+		e.preventDefault();
+		//task.indexOf(this.getSearchValue(e)
 	}
-
 
 	render() {
 		return (
 			<div>
-				<Filter addFilter={this.addFilter}/>
+				<Filter filterTasks={this.filterTasks}/>
 				<Table tasks={this.state.tasks} />
 				<Form addTask={this.addTask} />
 			</div>
-		)
-	}
-}
+		);
+	};
+};
 
-export default App
+export default App;
