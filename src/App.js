@@ -8,7 +8,8 @@ class App extends React.Component {
 
 	// setting my state object.
 	state = {
-		tasks: ['teste', 'caio', 'caue', 'elaine', 'stark']
+		tasks: [],
+		filter: undefined
 	};
 
 	// add a new task to table.
@@ -17,9 +18,9 @@ class App extends React.Component {
 	}
 
 	getSearchValue = (e) => {
+		console.log(e.target.value);
 		return  e.target.value;
 	}
-
 	addTask = (e) => {
 		e.preventDefault()
 		this.setState({
@@ -27,10 +28,16 @@ class App extends React.Component {
 		});
 	};
 
+	/*setInputValue = (e) => {
+	
+	}
+	
 	filterTasks = (e) => {
 		e.preventDefault();
-		//task.indexOf(this.getSearchValue(e)
-	}
+		const searching = this.state.tasks.map( (item, index) => {
+			const value = item.indexOf(this.getSearchValue(e));
+		})
+	}*/
 
 	render() {
 		return (
