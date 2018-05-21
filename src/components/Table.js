@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Tasks = props => <tr><td>{props.tasks}</td></tr>;
+const Tasks = props => <tr><td>{props.tasks}</td><td><button onClick={props.editTask}>edit</button></td></tr>;
 
 class Table extends React.Component{
     render () {
