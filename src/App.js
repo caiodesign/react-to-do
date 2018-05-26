@@ -1,38 +1,60 @@
 import React from 'react';
 import Table from './components/Table';
-import Form from './components/Form';
 
 class App extends React.Component {
 
 	// setting my state object.
 	state = {
-		tasks: []
+		tasks: [
+			{
+				id: 1,
+				name: 'Treinar'
+			},
+			{
+				id: 2,
+				name: 'Estudar'
+			}
+		]
 	};
 
+	deleteTask (id, e) {
+		const Tasks = Object.assign([], this.state.tasks);
+		const taskIndex = Tasks.findIndex( (item) => item.id === id);
 
-	clearInputValue = (e) => e.value = " ";
+		Tasks.splice(taskIndex, 1);
 
-	editTask = (e) => {
-		e.preventDefault();
-		console.log(0);
+		this.setState({
+			tasks: Tasks
+		})
+
 	}
 
-	addTask = (e) => {
+	addtask (e) {
 		e.preventDefault();
-		if(e.target.elements.taskName.value.length > 2){
-			this.setState({
-				tasks: this.state.tasks.concat(e.target.elements.taskName.value)
-			});
-			this.clearInputValue(e.target.elements.taskName);
+		const Tasks = Object.assign([], this.state.tasks);
+		const newUser = {
+			id: () => Tasks[Tasks.length - 1].id + 1,
+			name: e.target.taskname.value
 		}
-		
-	};
+
+		this.setState({
+			tasks: Tasks.concat(newUser)
+		})
+
+	}
 
 	render() {
 		return (
 			<div>
-				<Table editTask={this.editTask} tasks={this.state.tasks} />
-				<Form addTask={this.addTask} />
+				{
+					this.state.tasks.map( (item) => {
+						return <Table key={item.id} delEvent={this.deleteTask.bind(this, item.id)}>{item.name}</Table>
+					})
+				}
+				<form onSubmit={this.addtask.bind(this)}>
+					<input type="text" name="taskname"/>
+					<input type="submit" value="Add new task" />
+				</form>
 			</div>
 		);
 	};
