@@ -23,8 +23,25 @@ class App extends React.Component {
 				id: 2,
 				name: 'Estudar',
 				completed: false
+			},
+			{
+				id: 3,
+				name: 'Trabalhar',
+				completed: false
+			},
+			{
+				id: 4,
+				name: 'Correr',
+				completed: false
+			},
+			{
+				id: 5,
+				name: 'Jogar',
+				completed: false
 			}
-		]
+		],
+		completed: 0,
+		incompleted: 5
 	};
 
 
@@ -77,7 +94,28 @@ class App extends React.Component {
 		})
 
 		this.setState({
-			completed: getCompletedTasks.length
+			completed: getCompletedTasks.length,
+			incompleted: this.state.tasks.length - getCompletedTasks.length
+		})
+	}
+
+	filterCompletedTasks () {
+		const getCompletedTasks = this.state.tasks.filter((item) => {
+			return item.completed === true;
+		})
+
+		this.setState({
+			filter: getCompletedTasks
+		})
+	}
+
+	filterIncompletedTasks () {
+		const getIncompletedTasks = this.state.tasks.filter((item) => {
+			return item.completed === false;
+		})
+
+		this.setState({
+			filter: getIncompletedTasks
 		})
 	}
 
@@ -85,11 +123,13 @@ class App extends React.Component {
 
 
 	render() {
+		let StateTasks;
+		this.state.filter ? StateTasks = this.state.filter : StateTasks = this.state.tasks;
 		return (
 			<Todo>
 				<h1>Tasks</h1>
 				{
-					this.state.tasks.map( (item) => {
+					StateTasks.map( (item) => {
 						return <Table key={item.id} classEvent={this.toggleDoneClass.bind(this, item.id)} delEvent={this.deleteTask.bind(this, item.id)}>{item.name}</Table>
 					})
 				}
@@ -99,7 +139,7 @@ class App extends React.Component {
 				</form>
 				<div>
 					<br />
-					<p>Completed: {this.state.completed}</p><p>Incompleted {this.state.incompleted}:</p>
+					<p onClick={this.filterCompletedTasks.bind(this)}>Filter for completed tasks: {this.state.completed}</p><p onClick={this.filterIncompletedTasks.bind(this)}>Filter for incompleted Tasks: {this.state.incompleted}</p>
 				</div>
 			</Todo>
 		);
