@@ -25,34 +25,29 @@ class App extends React.Component {
 		tasks: [
 			{
 				id: 1,
-				name: 'Treinar',
+				name: 'Study',
 				completed: false
 			},
 			{
 				id: 2,
-				name: 'Estudar',
-				completed: false
-			},
-			{
-				id: 3,
-				name: 'Trabalhar',
-				completed: false
-			},
-			{
-				id: 4,
-				name: 'Correr',
-				completed: false
-			},
-			{
-				id: 5,
-				name: 'Jogar',
+				name: 'Workout',
 				completed: false
 			}
 		],
 		completed: 0,
-		incompleted: 5
+		incompleted: 2
 	};
 
+	componentWillMount() {
+		localStorage.getItem('tasks') && this.setState({
+			tasks: JSON.parse(localStorage.getItem('tasks'))
+		})
+	}
+
+	componentWillUpdate(nextProps, nextState){
+		localStorage.setItem('tasks', JSON.stringify(nextState.tasks)); 
+		localStorage.setItem('tasksDate', Date.now()); 
+	}
 
 	deleteTask (id, e) {
 		const Tasks = Object.assign([], this.state.tasks);
