@@ -1,22 +1,26 @@
 # React To-do App
 
-This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
+A simple To-do app developed using React v16+.
 
-## Available Scripts
+## Getting Started
 
 In the project directory, you can run:
 
+### `npm install`
+
+To install the app dependencies and run:
+
 ### `npm start`
 
-Runs the app in the development mode.<br>
+This command will open the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.<br>
 You will also see any lint errors in the console.
 
-### `npm test`
+Use the `npm build` to compile the app for production mode.
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](#running-tests) for more information.
+### `npm build`
 
-### `npm run build`
+License:
+This project is licensed under the MIT License.
