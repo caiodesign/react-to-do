@@ -2,7 +2,7 @@
 
 A simple To-do app developed using React v16+.
 
-[https://caio-react-to-do-app.herokuapp.com/](Live demo)
+[https://caio-react-to-do-app.herokuapp.com](Live demo)
 
 ## Getting Started
 
