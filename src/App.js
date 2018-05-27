@@ -79,9 +79,8 @@ class App extends React.Component {
 	toggleDoneClass (id, e) {
 		const Tasks = Object.assign([], this.state.tasks);
 		const index = this.state.tasks.findIndex( (item) => item.id === id);
-		e.target.parentNode.classList.toggle('done');
-
 		Tasks[index].completed ? Tasks[index].completed = false : Tasks[index].completed = true;
+		
 		this.refreshTask();
 		this.setState({
 			tasks: Tasks,
@@ -119,6 +118,12 @@ class App extends React.Component {
 		})
 	}
 
+	showAllTasks () {
+		this.setState({
+			filter: undefined
+		})
+	}
+
 	
 
 
@@ -130,7 +135,7 @@ class App extends React.Component {
 				<h1>Tasks</h1>
 				{
 					StateTasks.map( (item) => {
-						return <Table key={item.id} classEvent={this.toggleDoneClass.bind(this, item.id)} delEvent={this.deleteTask.bind(this, item.id)}>{item.name}</Table>
+						return <Table doneClass={item.completed} key={item.id} classEvent={this.toggleDoneClass.bind(this, item.id)} delEvent={this.deleteTask.bind(this, item.id)}>{item.name}</Table>
 					})
 				}
 				<form onSubmit={this.addtask.bind(this)}>
@@ -139,7 +144,15 @@ class App extends React.Component {
 				</form>
 				<div>
 					<br />
-					<p onClick={this.filterCompletedTasks.bind(this)}>Filter for completed tasks: {this.state.completed}</p><p onClick={this.filterIncompletedTasks.bind(this)}>Filter for incompleted Tasks: {this.state.incompleted}</p>
+					<p onClick={this.filterCompletedTasks.bind(this)}>
+						Filter completed: {this.state.completed}
+					</p>
+					<p onClick={this.filterIncompletedTasks.bind(this)}>
+						Filter incompleted: {this.state.incompleted}
+					</p>
+					<p onClick={this.showAllTasks.bind(this)}>
+						Show all
+					</p>
 				</div>
 			</Todo>
 		);

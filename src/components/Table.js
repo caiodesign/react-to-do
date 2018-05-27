@@ -26,7 +26,7 @@ const Task = styled.div`
 
 const Table = props => {
     return(
-        <Task>
+        <Task className={props.doneClass ? 'done' : 'undone'}>
             <p>{props.children}</p>
             <span onClick={props.classEvent}>✓</span>
             <span onClick={props.delEvent} >X</span>
