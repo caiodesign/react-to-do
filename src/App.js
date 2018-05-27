@@ -38,6 +38,7 @@ class App extends React.Component {
 	};
 
 	componentWillMount() {
+		document.title = 'React To-Do app';
 		localStorage.getItem('tasks') && this.setState({
 			tasks: JSON.parse(localStorage.getItem('tasks'))
 		})
