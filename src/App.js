@@ -9,6 +9,15 @@ const Todo = styled.div`
 	max-width: 720px;
 `
 
+const Filter = styled.div`
+	span{
+		cursor: pointer;
+		color: blue;
+		font-weight: bold;
+	}
+`
+
+
 class App extends React.Component {
 
 	// setting my state object.
@@ -80,7 +89,7 @@ class App extends React.Component {
 		const Tasks = Object.assign([], this.state.tasks);
 		const index = this.state.tasks.findIndex( (item) => item.id === id);
 		Tasks[index].completed ? Tasks[index].completed = false : Tasks[index].completed = true;
-		
+
 		this.refreshTask();
 		this.setState({
 			tasks: Tasks,
@@ -142,18 +151,18 @@ class App extends React.Component {
 					<input type="text" name="taskname" maxLength="16"/>
 					<input type="submit" value="Add new task" />
 				</form>
-				<div>
+				<Filter>
 					<br />
 					<p onClick={this.filterCompletedTasks.bind(this)}>
-						Filter completed: {this.state.completed}
+						<span>Filter completed:</span> {this.state.completed}
 					</p>
 					<p onClick={this.filterIncompletedTasks.bind(this)}>
-						Filter incompleted: {this.state.incompleted}
+						<span>Filter incompleted:</span> {this.state.incompleted}
 					</p>
 					<p onClick={this.showAllTasks.bind(this)}>
-						Show all
+						<span>Show all</span>
 					</p>
-				</div>
+				</Filter>
 			</Todo>
 		);
 	};
