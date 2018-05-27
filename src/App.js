@@ -44,7 +44,7 @@ class App extends React.Component {
 		e.preventDefault();
 		const Tasks = Object.assign([], this.state.tasks);
 		const newUser = {
-			id: Tasks[Tasks.length - 1].id + 1,
+			id:	Math.floor((Math.random() * 100) + 1),
 			name: e.target.taskname.value,
 			completed: false
 		}
@@ -72,12 +72,9 @@ class App extends React.Component {
 	}
 
 	refreshTask () {
-		console.log('start');
 		const getCompletedTasks = this.state.tasks.filter((item) => {
 			return item.completed === true;
 		})
-		console.log(getCompletedTasks);
-
 
 		this.setState({
 			completed: getCompletedTasks.length
@@ -102,7 +99,7 @@ class App extends React.Component {
 				</form>
 				<div>
 					<br />
-					<p>Completed: {this.state.completed}</p><p>Incompleted:</p>
+					<p>Completed: {this.state.completed}</p><p>Incompleted {this.state.incompleted}:</p>
 				</div>
 			</Todo>
 		);
