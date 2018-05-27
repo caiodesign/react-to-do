@@ -17,7 +17,6 @@ const Filter = styled.div`
 	}
 `
 
-
 class App extends React.Component {
 
 	// setting my state object.
@@ -127,9 +126,6 @@ class App extends React.Component {
 			filter: undefined
 		})
 	}
-
-	
-
 
 	render() {
 		let StateTasks;
