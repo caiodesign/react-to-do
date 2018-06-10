@@ -17,6 +17,7 @@ const Task = styled.div`
        }
     }
     p{
+        color: #fff;
         margin: 0px 10px;
     }
     span{
