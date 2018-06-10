@@ -17,6 +17,7 @@ const Task = styled.div`
        }
     }
     p{
+        font-size: 24px;
         color: #fff;
         margin: 0px 10px;
     }
