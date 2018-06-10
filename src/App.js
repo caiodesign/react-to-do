@@ -7,8 +7,14 @@ const Todo = styled.div`
 	height: 100vh;
 	text-align: center;
 	margin: 0 auto;
-	width: 100%;
-	max-width: 720px;
+	width: 100vw; 	
+	color: #fff;
+	form{
+		margin-top: 20px;
+	}
+	input[type="submit"]{
+		margin-left: 20px;
+	}
 `
 
 const Filter = styled.div`
@@ -17,6 +23,12 @@ const Filter = styled.div`
 		color: blue;
 		font-weight: bold;
 	}
+`
+
+const Title = styled.h1`
+	color: #fff;
+	margin-top: 0px;
+	padding-top: 20px;
 `
 
 class App extends React.Component {
@@ -135,14 +147,14 @@ class App extends React.Component {
 		this.state.filter ? StateTasks = this.state.filter : StateTasks = this.state.tasks;
 		return (
 			<Todo>
-				<h1>Tasks</h1>
+				<Title>Tasks To Do</Title>
 				{
 					StateTasks.map( (item) => {
 						return <Table doneClass={item.completed} key={item.id} classEvent={this.toggleDoneClass.bind(this, item.id)} delEvent={this.deleteTask.bind(this, item.id)}>{item.name}</Table>
 					})
 				}
 				<form onSubmit={this.addtask.bind(this)}>
-					<input type="text" name="taskname" maxLength="16"/>
+					<input type="text" placeholder="Enter task here" name="taskname" maxLength="16"/>
 					<input type="submit" value="Add new task" />
 				</form>
 				<Filter>
