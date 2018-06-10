@@ -3,6 +3,8 @@ import Table from './components/Table';
 import styled from 'styled-components';
 
 const Todo = styled.div`
+	background-color: rgb(28, 28, 28);
+	height: 100vh;
 	text-align: center;
 	margin: 0 auto;
 	width: 100%;
