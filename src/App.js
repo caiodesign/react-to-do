@@ -154,7 +154,12 @@ class App extends React.Component {
 					})
 				}
 				<form onSubmit={this.addtask.bind(this)}>
-					<input type="text" placeholder="Enter task here" name="taskname" maxLength="16"/>
+					<div class="group">      
+						<input type="text" name="taskname" required />
+						<span class="highlight"></span>
+						<span class="bar"></span>
+						<label>New task name</label>
+					</div>
 					<input type="submit" value="Add new task" />
 				</form>
 				<Filter>

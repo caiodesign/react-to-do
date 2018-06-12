@@ -22,6 +22,7 @@ const Task = styled.div`
         margin: 0px 10px;
     }
     span{
+        cursor: pointer;
         padding: 0 10px;
     }
 `;
