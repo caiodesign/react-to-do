@@ -18,6 +18,11 @@ const Todo = styled.div`
 `
 
 const Filter = styled.div`
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	flex-direction: column;
+	justify-content: center;
 	span{
 		cursor: pointer;
 		color: blue;
