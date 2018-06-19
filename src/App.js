@@ -3,7 +3,9 @@ import Table from './components/Table';
 import styled from 'styled-components';
 
 const Todo = styled.div`
-	background-color: rgb(28, 28, 28);
+	@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+  	font-family: 'Open Sans', sans-serif;
+	background-color: #1C2036;
 	height: 100vh;
 	text-align: center;
 	margin: 0 auto;
@@ -15,6 +17,9 @@ const Todo = styled.div`
 	input[type="submit"]{
 		margin-left: 20px;
 	}
+	input[name="taskname"]{
+		color: #FCCB0A;
+	}
 `
 
 const Filter = styled.div`
@@ -25,13 +30,14 @@ const Filter = styled.div`
 	justify-content: center;
 	span{
 		cursor: pointer;
-		color: blue;
+		color: #FCCB0A;
 		font-weight: bold;
 	}
 `
 
 const Title = styled.h1`
-	color: #fff;
+	text-transform: uppercase;
+	color: #EDEEF0;
 	margin-top: 0px;
 	padding-top: 20px;
 `
