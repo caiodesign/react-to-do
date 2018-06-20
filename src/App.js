@@ -1,6 +1,7 @@
 import React from 'react';
-import Table from './components/Table';
 import styled from 'styled-components';
+import Table from './components/Table';
+import Form from './components/Form';
 
 const Todo = styled.div`
 	@import url('https://fonts.googleapis.com/css?family=Open+Sans');
@@ -11,15 +12,6 @@ const Todo = styled.div`
 	margin: 0 auto;
 	width: 100vw; 	
 	color: #fff;
-	form{
-		margin-top: 20px;
-	}
-	input[type="submit"]{
-		margin-left: 20px;
-	}
-	input[name="taskname"]{
-		color: #FCCB0A;
-	}
 `
 
 const Filter = styled.div`
@@ -164,15 +156,7 @@ class App extends React.Component {
 						return <Table doneClass={item.completed} key={item.id} classEvent={this.toggleDoneClass.bind(this, item.id)} delEvent={this.deleteTask.bind(this, item.id)}>{item.name}</Table>
 					})
 				}
-				<form onSubmit={this.addtask.bind(this)}>
-					<div class="group">      
-						<input type="text" name="taskname" required />
-						<span class="highlight"></span>
-						<span class="bar"></span>
-						<label>New task name</label>
-					</div>
-					<input type="submit" value="Add new task" />
-				</form>
+				<Form addSomeTask={this.addtask.bind(this)} />
 				<Filter>
 					<br />
 					<p onClick={this.filterCompletedTasks.bind(this)}>
